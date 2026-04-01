@@ -1,0 +1,326 @@
+:root {
+    --bg-base: #0a0a0f;
+    --glass-bg: rgba(25, 25, 35, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    
+    --primary: #00f0ff;
+    --primary-glow: rgba(0, 240, 255, 0.5);
+    --danger: #ff2a5f;
+    --danger-glow: rgba(255, 42, 95, 0.5);
+    
+    --text-main: #f0f0f5;
+    --text-muted: #8b8b99;
+    
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    overflow: hidden; /* Hide whole body scroll, manage in container */
+    height: 100vh;
+}
+
+/* Background Animated Gradient Mesh / Aesthetic Setup */
+.app-background {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(20, 20, 40, 1), var(--bg-base) 40%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+/* Glassmorphism Generic Panel */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: var(--glass-shadow);
+}
+
+/* Header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    flex-shrink: 0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.app-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    filter: drop-shadow(0 0 8px var(--primary-glow));
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Inputs & Buttons */
+.glass-input {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    outline: none;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.glass-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.2);
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    border: none;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn.primary {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 4px 15px var(--primary-glow);
+}
+
+.btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--primary-glow);
+}
+
+.btn.danger {
+    background: var(--danger);
+    color: #fff;
+    box-shadow: 0 4px 15px var(--danger-glow);
+}
+
+.btn.danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--danger-glow);
+}
+
+.btn.icon-btn {
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+}
+
+.btn.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.btn.icon-btn.active-pause {
+    background: var(--danger);
+    color: #fff;
+    border-color: var(--danger);
+}
+
+/* Main Grid Area */
+.charts-grid {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap: 1.5rem;
+    padding: 0.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+.charts-grid::-webkit-scrollbar {
+    width: 8px;
+}
+.charts-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+.charts-grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+/* Empty State */
+.empty-state {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Chart Card */
+.chart-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem;
+    gap: 1rem;
+    min-height: 400px;
+    height: 100%;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chart-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.chart-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chart-body {
+    flex-grow: 1;
+    position: relative;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2); /* Base for canvas */
+    transition: background 0.3s ease;
+}
+
+/* Footer Controls */
+.chart-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 0.8rem;
+    border-radius: 12px;
+}
+
+.settings-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.setting-item input {
+    width: 70px;
+    padding: 0.3rem 0.5rem;
+    text-align: center;
+}
+
+.theme-group {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Custom Color Pickers */
+.color-picker-wrapper {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid var(--glass-border);
+    flex-shrink: 0;
+}
+
+.color-preview {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.line-preview {
+    background: var(--primary);
+}
+
+.bg-preview {
+    background: #ffffff;
+}
+
+.color-picker-wrapper input[type="color"] {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}

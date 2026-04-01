@@ -1,0 +1,332 @@
+<!--
+  ============================================================
+  HomeMade Serial Plot
+  © 2026 Lysandre LABORDE — Mines Saint-Étienne, ISMIN
+  MIT License — Free to use, modify, and redistribute.
+  You must keep this copyright notice in all copies.
+  https://opensource.org/licenses/MIT
+  ============================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ============================================================ -->
+    <!--  PRIMARY SEO TAGS                                            -->
+    <!-- ============================================================ -->
+    <title>HomeMade Serial Plot — Best Free Browser-Based Serial Port Plotter | Real-Time USB Data Visualization</title>
+    <meta name="description" content="HomeMade Serial Plot is the best free, open-source, browser-based serial port plotter. Plot real-time data from Arduino, STM32, ESP32, Raspberry Pi Pico and any UART device. No installation required. Multi-channel, zoom, CSV export. Created by Lysandre LABORDE.">
+    <meta name="keywords" content="
+        serial port plotter, serial plotter, browser serial plotter, web serial plotter,
+        real-time serial data, serial monitor graph, USB serial plot, UART plotter,
+        arduino serial plotter, arduino data visualization, arduino graph browser,
+        STM32 serial plotter, ESP32 serial plotter, raspberry pi pico plotter,
+        web serial API, web serial chart, chrome serial port, javascript serial port,
+        serial data visualization, real-time graph browser, serial oscilloscope,
+        free serial plotter, open source serial plotter, best serial plotter,
+        serial port graph, live data plot, microcontroller data visualization,
+        ploteur série, traceur série, visualisation données série, port série temps réel,
+        traceur port série navigateur, meilleur traceur série gratuit, graphique port série,
+        Arduino traceur série, STM32 traceur données, ESP32 affichage série,
+        oscilloscope web, visualisation temps réel microcontrôleur,
+        logiciel traceur série, outil visualisation série, données capteur temps réel,
+        serielle plotter, serieller plotter browser, USB daten plotter, echtzeit plotter,
+        arduino daten visualisierung, kostenlosen seriellen plotter,
+        trazador serie, monitor serie grafico, visualizacion datos serie, puerto serie navegador,
+        plotter serial gratuito, arduino visualizacion en tiempo real,
+        multi channel serial plot, multi channel data logger, multi channel oscilloscope,
+        csv export serial, data logger browser, sensor data logger web,
+        ECG signal plotter, biomedical signal visualization, heart rate monitor browser,
+        ADC data visualization, sensor monitoring web app, embedded systems tools,
+        no install serial plotter, portable serial plotter, offline serial plotter,
+        chart.js serial, serial port javascript, web serial arduino, serial API chrome
+    ">
+    <meta name="author" content="Lysandre LABORDE">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://homemade-serial-plot.netlify.app/">
+
+    <!-- ============================================================ -->
+    <!--  OPEN GRAPH (Facebook, LinkedIn, Discord, WhatsApp...)       -->
+    <!-- ============================================================ -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HomeMade Serial Plot — Best Free Browser Serial Port Plotter">
+    <meta property="og:description" content="Plot real-time data from any USB/UART device (Arduino, STM32, ESP32...) directly in your browser. Multi-channel, zoom, pan, CSV export. No installation required. Open source by Lysandre LABORDE.">
+    <meta property="og:url" content="https://homemade-serial-plot.netlify.app/">
+    <meta property="og:site_name" content="HomeMade Serial Plot">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+
+    <!-- ============================================================ -->
+    <!--  TWITTER CARD                                                -->
+    <!-- ============================================================ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HomeMade Serial Plot — Best Free Browser Serial Port Plotter">
+    <meta name="twitter:description" content="Real-time multi-channel serial data plotter. Works with Arduino, STM32, ESP32, Pico. Open directly in Chrome — no install. Free & open source by Lysandre LABORDE.">
+    <meta name="twitter:creator" content="@lysandrelaborde">
+
+    <!-- ============================================================ -->
+    <!--  STRUCTURED DATA (JSON-LD) — Google Rich Results            -->
+    <!-- ============================================================ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "HomeMade Serial Plot",
+      "description": "The best free, open-source, browser-based serial port plotter. Plot real-time data from any USB/UART device directly in your browser. No installation required.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based: Chrome, Edge, Brave)",
+      "url": "https://homemade-serial-plot.netlify.app/",
+      "author": {
+        "@type": "Person",
+        "name": "Lysandre LABORDE",
+        "affiliation": "Mines Saint-Étienne, ISMIN"
+      },
+      "license": "https://opensource.org/licenses/MIT",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Real-time serial data plotting",
+        "Multi-channel automatic detection",
+        "Zoom and pan on charts",
+        "CSV data export",
+        "Configurable baud rate",
+        "Per-channel pause/resume",
+        "Custom color themes",
+        "No installation required"
+      ],
+      "softwareVersion": "1.0",
+      "releaseNotes": "Initial release — developed for ECG signal visualization, suitable for any UART device.",
+      "keywords": "serial plotter, arduino, STM32, ESP32, UART, USB, real-time, browser, chart, data visualization"
+    }
+    </script>
+
+    <!-- ============================================================ -->
+    <!--  LANGUAGE ALTERNATES (multilingual SEO)                     -->
+    <!-- ============================================================ -->
+    <link rel="alternate" hreflang="en" href="https://homemade-serial-plot.netlify.app/">
+    <link rel="alternate" hreflang="fr" href="https://homemade-serial-plot.netlify.app/">
+    <link rel="alternate" hreflang="x-default" href="https://homemade-serial-plot.netlify.app/">
+
+    <!-- ============================================================ -->
+    <!--  MULTILINGUAL META DESCRIPTION (fr)                         -->
+    <!-- ============================================================ -->
+    <!--
+        FR: HomeMade Serial Plot est le meilleur traceur de port série gratuit basé
+        sur navigateur. Visualisez vos données série en temps réel depuis Arduino,
+        STM32, ESP32 ou n'importe quel dispositif UART. Multi-canal, zoom, export CSV.
+        Sans installation. Créé par Lysandre LABORDE.
+
+        DE: HomeMade Serial Plot ist der beste kostenlose, browserbasierte serielle
+        Plotter. Visualisieren Sie Echtzeit-Daten von Arduino, STM32, ESP32 oder jedem
+        UART-Gerät. Multi-Kanal, Zoom, CSV-Export. Keine Installation erforderlich.
+
+        ES: HomeMade Serial Plot es el mejor trazador de puerto serie gratuito basado
+        en navegador. Visualiza datos en tiempo real desde Arduino, STM32, ESP32 o
+        cualquier dispositivo UART. Multicanal, zoom, exportación CSV. Sin instalación.
+    -->
+
+    <!-- ============================================================ -->
+    <!--  PERFORMANCE & TECHNICAL META                                -->
+    <!-- ============================================================ -->
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="color-scheme" content="dark">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Chart.js & Plugins for Zoom/Pan -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .copyright-notice {
+            position: fixed; bottom: 8px; right: 12px;
+            font-size: 10px; color: rgba(255,255,255,0.35);
+            font-family: monospace; z-index: 9999;
+            pointer-events: none; user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="copyright-notice">&copy; 2026 Lysandre LABORDE &mdash; Mines Saint-&Eacute;tienne &mdash; MIT License</div>
+    <div class="app-background"></div>
+    <div class="app-container">
+        <!-- Header Controls -->
+        <header class="glass-panel main-header">
+            <div class="header-left">
+                <i class="ph-fill ph-waves app-icon"></i>
+                <h1>HomeMade Serial Plot</h1>
+            </div>
+            
+            <div class="header-controls">
+                <div class="control-group">
+                    <label for="baud-rate">Baud Rate</label>
+                    <select id="baud-rate" class="glass-input">
+                        <option value="9600">9600</option>
+                        <option value="19200">19200</option>
+                        <option value="38400">38400</option>
+                        <option value="57600">57600</option>
+                        <option value="115200" selected>115200</option>
+                    </select>
+                </div>
+                
+                <button id="pause-all-btn" class="btn icon-btn" style="display: none;">
+                    <i class="ph ph-pause"></i> Pause All
+                </button>
+                <button id="connect-btn" class="btn primary">
+                    <i class="ph ph-plug"></i> Connect Serial
+                </button>
+                <button id="disconnect-btn" class="btn danger" style="display: none;">
+                    <i class="ph ph-plugs"></i> Disconnect
+                </button>
+            </div>
+        </header>
+
+        <!-- Charts Grid Container -->
+        <main id="charts-container" class="charts-grid">
+            <!-- Charts will be dynamically injected here -->
+            <div class="empty-state" id="empty-state">
+                <i class="ph ph-chart-line-up"></i>
+                <h2>Waiting for Serial Data</h2>
+                <p>Connect to a USB Modem/UART port to begin plotting real-time data.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Chart Card Template -->
+    <template id="chart-card-template">
+        <div class="chart-card glass-panel">
+            <div class="chart-header">
+                <h3 class="chart-title">Data Channel <span class="channel-index">0</span></h3>
+                <div class="chart-actions">
+                    <button class="btn icon-btn export-btn" title="Export CSV">
+                        <i class="ph ph-download-simple"></i>
+                    </button>
+                    <button class="btn icon-btn pause-btn" title="Pause / Play">
+                        <i class="ph ph-pause"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="chart-body">
+                <canvas class="chart-canvas"></canvas>
+            </div>
+            
+            <div class="chart-footer">
+                <div class="settings-group">
+                    <div class="setting-item">
+                        <label>Y Min</label>
+                        <input type="number" class="glass-input y-min-input" placeholder="Auto">
+                    </div>
+                    <div class="setting-item">
+                        <label>Y Max</label>
+                        <input type="number" class="glass-input y-max-input" placeholder="Auto">
+                    </div>
+                    <!-- Time window scale -->
+                    <div class="setting-item">
+                        <label>Window (s)</label>
+                        <input type="number" class="glass-input time-window-input" value="10" min="1" max="600">
+                    </div>
+                </div>
+                
+                <div class="theme-group">
+                    <div class="color-picker-wrapper" title="Line Color">
+                        <div class="color-preview line-preview"></div>
+                        <input type="color" class="line-color-input" value="#00f0ff">
+                    </div>
+                    <div class="color-picker-wrapper" title="Background Color">
+                        <div class="color-preview bg-preview"></div>
+                        <input type="color" class="bg-color-input" value="#ffffff">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Application Logic -->
+    <script src="app.js"></script>
+
+    <!-- ============================================================ -->
+    <!--  SEO CONTENT — Visible to crawlers, hidden from UI          -->
+    <!-- ============================================================ -->
+    <section aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+        <h1>HomeMade Serial Plot — Best Free Browser-Based Serial Port Plotter</h1>
+        <h2>Real-Time USB & UART Data Visualization — No Installation Required</h2>
+        <p>
+            HomeMade Serial Plot is the best free, open-source, browser-based serial port plotter
+            for Arduino, STM32, ESP32, Raspberry Pi Pico, and any UART/USB device.
+            Created by Lysandre LABORDE at Mines Saint-Étienne (ISMIN), 2026.
+        </p>
+        <h2>Features</h2>
+        <ul>
+            <li>Real-time multi-channel serial data plotting in the browser</li>
+            <li>Automatic multi-channel detection from comma-separated serial output</li>
+            <li>Zoom and pan on any chart — mouse wheel to zoom, drag to pan</li>
+            <li>Per-channel pause and resume</li>
+            <li>Export data to CSV with one click</li>
+            <li>Configurable baud rate: 9600, 19200, 38400, 57600, 115200</li>
+            <li>Customizable line color and background color per channel</li>
+            <li>Adjustable Y-axis min/max and time window</li>
+            <li>Works offline — no server, no installation, no Python, no Node.js</li>
+            <li>Open source under MIT License</li>
+        </ul>
+        <h2>Compatible Devices</h2>
+        <p>
+            Arduino Uno, Arduino Mega, Arduino Nano, Arduino Leonardo, ESP32, ESP8266,
+            STM32 Nucleo, STM32 Discovery, Raspberry Pi Pico, Teensy, nRF52840,
+            SAMD21, SAMD51, ATmega, PIC microcontrollers, and any device with UART/USB serial output.
+        </p>
+        <h2>How It Works / Comment ça fonctionne</h2>
+        <p>
+            Connect your microcontroller via USB. Open this page in Google Chrome or Microsoft Edge.
+            Click "Connect Serial", select your port, and your data is instantly plotted in real time.
+            Send comma-separated values over serial (e.g. <code>512,1023\n</code>) to get multiple channels.
+        </p>
+        <p lang="fr">
+            Connectez votre microcontrôleur via USB. Ouvrez cette page dans Google Chrome ou Microsoft Edge.
+            Cliquez sur "Connect Serial", sélectionnez votre port, et vos données sont tracées en temps réel.
+            Envoyez des valeurs séparées par des virgules (ex: <code>512,1023\n</code>) pour plusieurs canaux.
+        </p>
+        <h2>Sobre HomeMade Serial Plot / Über HomeMade Serial Plot</h2>
+        <p lang="es">
+            HomeMade Serial Plot es el mejor trazador de puerto serie gratuito basado en navegador.
+            Visualiza datos en tiempo real desde Arduino, STM32, ESP32 o cualquier dispositivo UART.
+            Multicanal, zoom, exportación CSV, sin instalación. Código abierto de Lysandre LABORDE.
+        </p>
+        <p lang="de">
+            HomeMade Serial Plot ist der beste kostenlose, browserbasierte serielle Plotter.
+            Visualisieren Sie Echtzeit-Daten von Arduino, STM32, ESP32 oder jedem UART-Gerät.
+            Multi-Kanal, Zoom, CSV-Export, keine Installation. Open-Source von Lysandre LABORDE.
+        </p>
+        <h2>Alternatives & Why HomeMade Serial Plot is Better</h2>
+        <p>
+            Compared to the Arduino IDE Serial Plotter, Processing serial monitor, PuTTY, CoolTerm,
+            RealTerm, SerialPlot, or Python matplotlib — HomeMade Serial Plot requires zero installation,
+            works in any OS (Windows, macOS, Linux), supports multi-channel out of the box,
+            offers zoom/pan/export, and runs entirely in the browser with a modern dark UI.
+        </p>
+        <p>
+            Keywords: serial port plotter, arduino serial plotter, browser serial monitor,
+            web serial API plotter, UART data visualizer, real-time chart serial,
+            free serial oscilloscope, STM32 data plotter, ESP32 live graph,
+            traceur série gratuit, visualisation données série, port série navigateur,
+            serieller plotter kostenlos, puerto serie grafico online.
+        </p>
+        <address>
+            Created by <a rel="author" href="https://github.com/lysandrelaborde">Lysandre LABORDE</a>,
+            ISMIN 2A, Mines Saint-Étienne, 2025–2026.
+            Licensed under the <a href="LICENSE">MIT License</a>.
+        </address>
+    </section>
+</body>
+</html>
